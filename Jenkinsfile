@@ -18,7 +18,7 @@ pipeline {
         }
         stage ("Push Docker Image"){
             steps{
-            withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhubpwd')]) {
+            withCredentials([string(credentialsId: 'docker', variable: 'dockerhubpwd')]) {
              sh "docker login -u mabasha -p ${dockerhubpwd}"
         }    
             sh 'docker push mabasha/myapp:tomcat'
