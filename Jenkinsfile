@@ -1,16 +1,19 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven3'
-    }
-    options {
-        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
-    }
     stages{
-        stage('Build'){
+        stage ("Git Checkout"){
             steps{
-                 sh script: 'mvn clean package'
-                 archiveArtifacts artifacts: 'target/*.war', onlyIfSuccessful: true
+                git 'https://github.com/Mabasha545556/devops-.git'
+            }
+        }
+        stage ("Maven Build"){
+            steps{
+            sh 'mvn clean install package'
+            }
+        } 
+        stage ("webhook stage"){
+            steps{
+            echo 'welocme to webhooks'
             }
         }
         stage('Upload War To Nexus'){
@@ -28,11 +31,11 @@ pipeline {
                         ]
                     ], 
                     credentialsId: 'nexus3', 
-                    groupId: 'in.javahome', 
-                    nexusUrl: '172.31.15.204:8081', 
+                    groupId: 'in.sample', 
+                    nexusUrl: '172.31.3.113:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
-                    repository: nexusRepoName, 
+                    repository: myrepository-snapshot, 
                     version: "${mavenPom.version}"
                     }
             }
