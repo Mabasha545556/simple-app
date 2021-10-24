@@ -17,8 +17,8 @@ pipeline {
             }
         }
         stage ('nexusArtifactUploader'){
-          steps{
-             script{    
+            steps{
+                script{    
                     def mavenPom = readMavenPom file: 'pom.xml'
                     def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release"
                     nexusArtifactUploader artifacts: [
@@ -27,7 +27,7 @@ pipeline {
           classifier: '', 
           file: 'target/simple-app-${mavenPom.version}.war', 
           type: 'war'
-               ]
+            ]
         ], 
           credentialsId: 'nexus3', 
           groupId: 'in.sample', 
@@ -36,8 +36,8 @@ pipeline {
           protocol: 'http', 
           repository: 'myrepository-snapshot', 
           version: "${mavenPom.version}"
-            }
-          }
+                }
+            } 
         }
     }
 }
