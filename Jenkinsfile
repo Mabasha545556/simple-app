@@ -11,33 +11,18 @@ pipeline {
             sh 'mvn clean install package'
             }
         } 
-        stage ("webhook stage"){
+        stage ("Build Docker Image"){
             steps{
-            echo 'welocme to webhooks'
+           sh 'docker build -t mabasha/myapp:tomcat .'
             }
         }
-        stage ('nexusArtifactUploader'){
+        stage ("Push Docker Image"){
             steps{
-                script{    
-                    def mavenPom = readMavenPom file: 'pom.xml'
-                    def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release"
-                    nexusArtifactUploader artifacts: [
-                [
-          artifactId: 'simple-app', 
-          classifier: '', 
-          file: 'target/simple-app-${mavenPom.version}.war', 
-          type: 'war'
-            ]
-        ], 
-          credentialsId: 'nexus3', 
-          groupId: 'in.sample', 
-          nexusUrl: '172.31.3.113:8081', 
-          nexusVersion: 'nexus3', 
-          protocol: 'http', 
-          repository: 'myrepository-snapshot', 
-          version: "${mavenPom.version}"
-                }
-            } 
+            withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhubpwd')]) {
+             sh "docker login -u mabasha -p ${dockerhubpwd}"
+        }    
+            sh 'docker push mabasha/myapp:tomcat'
+            }
         }
     }
 }
