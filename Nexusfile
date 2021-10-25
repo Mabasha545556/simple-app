@@ -27,7 +27,7 @@ pipeline {
                         ]
                         
                     ], 
-                    credentialsId: 'nexus3', 
+                    credentialsId: 'nexus', 
                     groupId: 'in.sample', 
                     nexusUrl: '172.31.3.113:8081', 
                     nexusVersion: 'nexus3', 
