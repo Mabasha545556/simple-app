@@ -20,20 +20,20 @@ pipeline {
             steps{
                 nexusArtifactUploader artifacts: [
                     [
-                        artifactId: 'maven-project', 
+                        artifactId: 'simple-app', 
                         classifier: '', 
-                        file: 'webapp/target/webapp.war', 
+                        file: 'target/simple-app-3.0.0-SNAPSHOT.war', 
                         type: 'war'
                         ]
                         
                     ], 
                     credentialsId: 'nexus3', 
-                    groupId: 'com.example.maven-project', 
+                    groupId: 'in.sample', 
                     nexusUrl: '172.31.3.113:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'myrepository', 
-                    version: '2.0.0'
+                    version: '3.0.0'
                        
             }
         }
