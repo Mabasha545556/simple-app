@@ -27,13 +27,7 @@ pipeline {
           stage ('Deploy to K8s'){
             steps{
                 sshagent(['mykubernets']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@65.0.104.80"
-                   script{
-                       try{
-                           sh "ssh ec2-user@65.0.104.80 kubectl apply -f . "
-                       }catch (error){
-                           sh "ssh ec2-user@65.0.104.80 kubectl create -f . "
-                       }
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@65.0.104.80 kubectl apply -f tomcat "
                    }
                }
             }
