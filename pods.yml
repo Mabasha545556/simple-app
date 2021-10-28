@@ -9,5 +9,5 @@ spec:
        - name: tomcat
          image: mabasha/myapp:tomcat-1
          ports:
-           - containerport: 80
+           - containerport: 8080
          
