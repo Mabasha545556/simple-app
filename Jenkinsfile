@@ -21,7 +21,7 @@ pipeline {
             withCredentials([string(credentialsId: 'docker', variable: 'dockerhubpwd')]) {
              sh "docker login -u mabasha -p ${dockerhubpwd}"
         }    
-            sh 'docker push mabasha/myapp:tomcat'
+            sh 'docker push mabasha/myapp:tomcat-1'
             }
         }
     }
