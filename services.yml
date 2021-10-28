@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nodeapp
+  name: tomcat
 spec:
   selector:
-    app: nodeapp
+    app: tomcat
   ports:
   - protocol: TCP
     port: 80
