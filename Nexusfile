@@ -22,7 +22,7 @@ pipeline {
                     [
                         artifactId: 'simple-app', 
                         classifier: '', 
-                        file: 'target/simple-app-3.0.0-SNAPSHOT.war', 
+                        file: 'target/simple-app-3.0.1-SNAPSHOT.war', 
                         type: 'war'
                         ]
                         
@@ -33,7 +33,7 @@ pipeline {
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'simple-app-snapshot', 
-                    version: '3.0.0'
+                    version: '3.0.1'
                        
             }
         }
