@@ -4,7 +4,7 @@
 	<groupId>in.sample</groupId>
 	<artifactId>simple-app</artifactId>
 	<packaging>war</packaging>
-	<version>3.0.2-SNAPSHOT</version>
+	<version>3.0.2</version>
 	<name>simple-app</name>
 	<url>http://maven.apache.org</url>
 	
@@ -18,10 +18,10 @@
 
 	</dependencies>
 <distributionManagement>
-        <snapshotRepository>
-            <id>simple-app-snapshot</id>
-            <url>http://3.109.108.199:8081/repository/simple-app-snapshot/</url>
-        </snapshotRepository>
+        <repository>
+		<id>simple-app-release</id>
+		<url>http://3.109.108.199:8081/repository/simple-app-release/</url>
+        </repository>
 </distributionManagement>
 	
 </project>
