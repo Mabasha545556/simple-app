@@ -7,7 +7,7 @@ metadata:
 spec:
     containers:
        - name: tomcat
-         image: mabasha/myapp:tomcat-1
+         image: mabasha/myapp:tomcat
          ports:
            - containerport: 8080
          
