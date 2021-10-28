@@ -13,7 +13,7 @@ pipeline {
         } 
         stage ("Build Docker Image"){
             steps{
-           sh 'docker build -t mabasha/myapp:tomcat .'
+           sh 'docker build -t mabasha/myapp:tomcat . '
             }
         }
         stage ("Push Docker Image"){
