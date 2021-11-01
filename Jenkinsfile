@@ -27,7 +27,7 @@ pipeline {
           stage ('Deploy to K8s'){
             steps{
                 sshagent(['kubernets']) {
-                    sh "ssh -o StrictHostKeyChecking=no centos@13.232.53.99 kubectl create -f tomcat.yml"
+                    sh "ssh -o StrictHostKeyChecking=no kubeadmin@13.232.53.99 kubectl create -f tomcat.yml"
                    }
                }
             }
