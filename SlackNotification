@@ -13,7 +13,7 @@ pipeline {
         }
         stage ("Slack Notification"){
             steps{
-            slackSend channel: '#jenkins-slack', color: '#439FE0', message: 'welcome to jenkins slack', tokenCredentialId: 'slack'
+            slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#jenkins-slack', color: 'good', message: 'welcome to jenkins slack', tokenCredentialId: 'slack'
             }
         } 
     }
