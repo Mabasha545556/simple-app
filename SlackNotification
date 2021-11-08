@@ -11,9 +11,9 @@ pipeline {
             sh 'mvn clean install package'
             }
         }
-        stage ("Maven Build"){
+        stage ("Slack Notification"){
             steps{
-            
+            slackSend channel: '#jenkins-slack', color: '#439FE0', message: 'welcome to jenkins slack', tokenCredentialId: 'slack'
             }
         } 
     }
